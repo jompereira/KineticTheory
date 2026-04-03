@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support — Kinetic Theory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:       #0b1526;
+    --navy-mid:   #112040;
+    --navy-light: #1a2f58;
+    --orange:     #f7620a;
+    --amber:      #f5a623;
+    --text:       #e8eef8;
+    --muted:      #7a8fad;
+    --border:     rgba(255,255,255,0.07);
+    --glow-o:     rgba(247,98,10,0.15);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.75;
+    min-height: 100vh;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 2.5rem;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: rgba(11,21,38,0.92);
+    backdrop-filter: blur(14px);
+    z-index: 100;
+  }
+
+  .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+
+  .nav-logomark {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--orange), var(--amber));
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .nav-logomark svg { width: 20px; height: 20px; color: #fff; }
+
+  .nav-wordmark {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 1.25rem;
+    letter-spacing: 0.04em; text-transform: uppercase; color: var(--text);
+  }
+
+  .nav-wordmark span { color: var(--orange); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+
+  .nav-links a {
+    color: var(--muted); text-decoration: none;
+    font-size: 0.875rem; font-weight: 400;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    transition: color 0.15s;
+  }
+
+  .nav-links a:hover { color: var(--orange); }
+
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 3.5rem 0 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 100% at 50% -10%, var(--glow-o), transparent 65%);
+    pointer-events: none;
+  }
+
+  .page-eyebrow {
+    display: inline-block;
+    font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 1rem;
+    padding: 0.3rem 1rem;
+    border: 1px solid rgba(247,98,10,0.3);
+    border-radius: 20px;
+    background: rgba(247,98,10,0.08);
+  }
+
+  h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    letter-spacing: 0.02em; text-transform: uppercase;
+    line-height: 1.0; margin-bottom: 0.75rem;
+  }
+
+  .page-sub {
+    font-size: 0.875rem; color: var(--muted);
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+
+  .container { max-width: 780px; margin: 0 auto; padding: 0 1.5rem; }
+
+  .section { padding: 3rem 0; border-bottom: 1px solid var(--border); }
+  .section:last-of-type { border-bottom: none; }
+
+  h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: clamp(1.4rem, 3vw, 1.9rem);
+    letter-spacing: 0.03em; text-transform: uppercase;
+    color: var(--text); margin-bottom: 1.5rem; line-height: 1.1;
+  }
+
+  p { color: rgba(232,238,248,0.72); margin-bottom: 1rem; }
+  p:last-child { margin-bottom: 0; }
+
+  /* Filter tabs */
+  .filter-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.75rem; flex-wrap: wrap; }
+
+  .tab {
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: transparent;
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 500;
+    font-family: 'Barlow', sans-serif;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .tab:hover { border-color: rgba(247,98,10,0.4); color: var(--orange); }
+
+  .tab.active {
+    background: rgba(247,98,10,0.1);
+    border-color: rgba(247,98,10,0.4);
+    color: var(--orange);
+  }
+
+  /* FAQ */
+  details {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--navy-mid);
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+    transition: border-color 0.15s;
+  }
+
+  details.hidden { display: none; }
+  details[open] { border-color: rgba(247,98,10,0.2); }
+
+  summary {
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 0.95rem;
+    color: var(--text);
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    user-select: none;
+  }
+
+  summary::-webkit-details-marker { display: none; }
+
+  summary::after {
+    content: '+';
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--orange);
+    flex-shrink: 0;
+    transition: transform 0.2s;
+    line-height: 1;
+  }
+
+  details[open] summary::after { transform: rotate(45deg); }
+
+  .faq-body {
+    padding: 1rem 1.25rem 1.1rem;
+    font-size: 0.9rem;
+    color: rgba(232,238,248,0.6);
+    line-height: 1.7;
+    border-top: 1px solid var(--border);
+  }
+
+  .faq-body a { color: var(--amber); }
+
+  .summary-inner { display: flex; align-items: center; flex: 1; }
+
+  .game-tag {
+    display: inline-block;
+    font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.07em; text-transform: uppercase;
+    padding: 2px 8px; border-radius: 4px;
+    margin-left: 8px; vertical-align: middle;
+    background: rgba(247,98,10,0.1);
+    color: var(--orange);
+    border: 1px solid rgba(247,98,10,0.25);
+    font-family: 'Barlow', sans-serif;
+  }
+
+  /* Contact card */
+  .contact-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--navy-mid);
+    padding: 2.5rem 2rem;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-card::before {
+    content: '';
+    position: absolute;
+    top: -40px; left: 50%;
+    transform: translateX(-50%);
+    width: 300px; height: 150px;
+    background: radial-gradient(ellipse, var(--glow-o), transparent 70%);
+    pointer-events: none;
+  }
+
+  .contact-icon {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: rgba(247,98,10,0.12);
+    border: 1px solid rgba(247,98,10,0.25);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+
+  .contact-icon svg { width: 24px; height: 24px; color: var(--orange); }
+
+  .contact-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 1.4rem;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--text); position: relative;
+  }
+
+  .contact-card p { font-size: 0.9rem; margin: 0; position: relative; }
+
+  .btn-primary {
+    display: inline-block;
+    margin-top: 0.25rem;
+    padding: 0.7rem 2rem;
+    background: var(--orange);
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 1rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.15s, transform 0.1s;
+    position: relative;
+  }
+
+  .btn-primary:hover { background: #e0540a; transform: translateY(-1px); }
+
+  footer {
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    margin-top: 2rem;
+  }
+
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--orange); }
+  footer span { color: var(--orange); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logomark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2"/>
+        <path d="M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M4.9 19.1l4.2-4.2M14.9 9.1l4.2-4.2"/>
+      </svg>
+    </div>
+    <span class="nav-wordmark"><span>Kinetic</span> Theory</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#games">Games</a></li>
+    <li><a href="support.html">Support</a></li>
+    <li><a href="privacy-policy.html">Privacy</a></li>
+  </ul>
+</nav>
+
+<header>
+  <div class="container">
+    <div class="page-eyebrow">Help Center</div>
+    <h1>Support</h1>
+    <p class="page-sub">Maze Racer &amp; Connect the Colors</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="section">
+    <h2>Frequently asked questions</h2>
+
+    <div class="filter-tabs">
+      <button class="tab active" onclick="filterFAQ('all', this)">All games</button>
+      <button class="tab" onclick="filterFAQ('maze', this)">Maze Racer</button>
+      <button class="tab" onclick="filterFAQ('colors', this)">Connect the Colors</button>
+    </div>
+
+    <details data-game="maze">
+      <summary><span class="summary-inner">My purchase isn't showing up <span class="game-tag">Maze Racer</span></span></summary>
+      <div class="faq-body">
+        Go to the in-game settings menu and tap <strong>Restore Purchases</strong>. This re-validates all purchases against the App Store or Google Play. Make sure you're signed into the same Apple ID or Google account used for the original purchase.
+      </div>
+    </details>
+
+    <details data-game="maze">
+      <summary><span class="summary-inner">I lost my progress <span class="game-tag">Maze Racer</span></span></summary>
+      <div class="faq-body">
+        If you were signed in with Apple or Google, your progress is backed up to the cloud and will restore automatically when you sign in again. If you were playing as a guest, progress is stored locally — reinstalling or switching devices will not carry it over. Sign in to protect your saves.
+      </div>
+    </details>
+
+    <details data-game="colors">
+      <summary><span class="summary-inner">I lost my progress <span class="game-tag">Connect the Colors</span></span></summary>
+      <div class="faq-body">
+        Progress in Connect the Colors is stored locally on your device. Reinstalling the app or switching to a new device will reset your progress.
+      </div>
+    </details>
+
+    <details data-game="maze">
+      <summary><span class="summary-inner">How do lives work? <span class="game-tag">Maze Racer</span></span></summary>
+      <div class="faq-body">
+        You lose a life each time you hit a wall. You earn one life for every level you clear, up to a maximum of 5. When you run out of lives, you can watch a rewarded video ad for a full refill, or purchase a Life Refill from the game over screen.
+      </div>
+    </details>
+
+    <details data-game="maze">
+      <summary><span class="summary-inner">Does Remove Ads also remove rewarded video ads? <span class="game-tag">Maze Racer</span></span></summary>
+      <div class="faq-body">
+        No. Remove Ads permanently suppresses interstitial ads — the ones that appear automatically between levels. Rewarded video ads are optional and player-initiated; they remain available because they give you something in return. You are never forced to watch one.
+      </div>
+    </details>
+
+    <details data-game="maze">
+      <summary><span class="summary-inner">How do I change my ad privacy settings? <span class="game-tag">Maze Racer</span></span></summary>
+      <div class="faq-body">
+        You can revisit your consent choices at any time in the in-game settings menu. On iOS, you can also manage tracking permission under Settings → Privacy &amp; Security → Tracking.
+      </div>
+    </details>
+
+    <details data-game="maze">
+      <summary><span class="summary-inner">How do I delete my account and data? <span class="game-tag">Maze Racer</span></span></summary>
+      <div class="faq-body">
+        Email us at <a href="mailto:privacy@kinetictheory.games">privacy@kinetictheory.games</a> with the subject line "Delete my account". We will remove your Firebase account and all associated cloud data within 30 days.
+      </div>
+    </details>
+
+    <details data-game="all">
+      <summary>The game crashes or won't load</summary>
+      <div class="faq-body">
+        Try force-quitting and reopening the app. If the issue persists, make sure your OS is up to date, then reinstall. If it still crashes, contact us with your device model, OS version, and which game you're playing.
+      </div>
+    </details>
+
+  </div>
+
+  <div class="section">
+    <h2>Still need help?</h2>
+    <p>Didn't find your answer above? Send us an email — we typically respond within 2 business days.</p>
+
+    <div class="contact-card">
+      <div class="contact-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+          <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+        </svg>
+      </div>
+      <h3>Kinetic Theory Support</h3>
+      <p>José Pereira &nbsp;·&nbsp; Porto, Portugal</p>
+      <a class="btn-primary" href="mailto:support@kinetictheory.games">support@kinetictheory.games</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 <span>Kinetic Theory</span> &nbsp;·&nbsp; <a href="privacy-policy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="index.html">Home</a></p>
+</footer>
+
+<script>
+  function filterFAQ(game, btn) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('details[data-game]').forEach(d => {
+      const g = d.getAttribute('data-game');
+      const show = game === 'all' || g === game || g === 'all';
+      d.classList.toggle('hidden', !show);
+      if (!show) d.removeAttribute('open');
+    });
+  }
+</script>
+
+</body>
+</html>

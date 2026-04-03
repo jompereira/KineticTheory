@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Kinetic Theory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:       #0b1526;
+    --navy-mid:   #112040;
+    --navy-light: #1a2f58;
+    --orange:     #f7620a;
+    --amber:      #f5a623;
+    --text:       #e8eef8;
+    --muted:      #7a8fad;
+    --border:     rgba(255,255,255,0.07);
+    --glow-o:     rgba(247,98,10,0.15);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.75;
+    min-height: 100vh;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 2.5rem;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: rgba(11,21,38,0.92);
+    backdrop-filter: blur(14px);
+    z-index: 100;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+  }
+
+  .nav-logomark {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--orange), var(--amber));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-logomark svg { width: 20px; height: 20px; color: #fff; }
+
+  .nav-wordmark {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.25rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+
+  .nav-wordmark span { color: var(--orange); }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.15s;
+  }
+
+  .nav-links a:hover { color: var(--orange); }
+
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 3.5rem 0 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 100% at 50% -10%, var(--glow-o), transparent 65%);
+    pointer-events: none;
+  }
+
+  .page-eyebrow {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 1rem;
+    padding: 0.3rem 1rem;
+    border: 1px solid rgba(247,98,10,0.3);
+    border-radius: 20px;
+    background: rgba(247,98,10,0.08);
+  }
+
+  h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    line-height: 1.0;
+    margin-bottom: 0.75rem;
+  }
+
+  .page-sub {
+    font-size: 0.875rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Games pills */
+  .games-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin: 2.5rem 0;
+  }
+
+  @media (max-width: 480px) { .games-grid { grid-template-columns: 1fr; } }
+
+  .game-pill {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--navy-mid);
+    padding: 1rem 1.25rem;
+  }
+
+  .game-pill strong {
+    display: block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+  }
+
+  .game-pill span {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-family: monospace;
+  }
+
+  /* TOC */
+  nav.toc {
+    position: static;
+    backdrop-filter: none;
+    background: var(--navy-mid);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    margin: 0 0 3rem;
+  }
+
+  .toc-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 1rem;
+  }
+
+  .toc ol {
+    list-style: none;
+    counter-reset: toc;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.35rem 2rem;
+  }
+
+  @media (max-width: 500px) { .toc ol { grid-template-columns: 1fr; } }
+
+  .toc li { counter-increment: toc; }
+
+  .toc a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.15s;
+    display: flex;
+    gap: 0.6rem;
+    align-items: baseline;
+  }
+
+  .toc a::before {
+    content: counter(toc, decimal-leading-zero);
+    font-size: 0.7rem;
+    color: var(--orange);
+    opacity: 0.7;
+    flex-shrink: 0;
+    font-weight: 500;
+  }
+
+  .toc a:hover { color: var(--orange); }
+
+  /* Callout */
+  .callout {
+    border-left: 2px solid var(--orange);
+    background: rgba(247,98,10,0.07);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+    color: rgba(232,238,248,0.85);
+  }
+
+  /* Sections */
+  .section {
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section:last-of-type { border-bottom: none; }
+
+  .section-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--orange);
+    opacity: 0.7;
+    margin-bottom: 0.4rem;
+  }
+
+  h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 1.25rem;
+    line-height: 1.1;
+  }
+
+  h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin: 1.75rem 0 0.6rem;
+  }
+
+  p { color: rgba(232,238,248,0.72); margin-bottom: 1rem; }
+  p:last-child { margin-bottom: 0; }
+
+  ul, ol {
+    padding-left: 1.25rem;
+    color: rgba(232,238,248,0.72);
+    margin-bottom: 1rem;
+  }
+
+  li { margin-bottom: 0.3rem; }
+
+  a { color: var(--amber); }
+
+  .game-tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 6px;
+    vertical-align: middle;
+    background: rgba(247,98,10,0.1);
+    color: var(--orange);
+    border: 1px solid rgba(247,98,10,0.25);
+    font-family: 'Barlow', sans-serif;
+  }
+
+  .contact-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--navy-mid);
+    padding: 1.5rem 2rem;
+    margin-top: 1.5rem;
+  }
+
+  .contact-card p { margin: 0; }
+  .contact-card a { color: var(--amber); text-decoration: none; border-bottom: 1px solid rgba(245,166,35,0.3); }
+  .contact-card a:hover { border-color: var(--amber); }
+
+  .back-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-decoration: none;
+    margin-top: 2rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.15s;
+  }
+
+  .back-top:hover { color: var(--orange); }
+
+  footer {
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    margin-top: 2rem;
+  }
+
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--orange); }
+  footer span { color: var(--orange); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logomark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2"/>
+        <path d="M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M4.9 19.1l4.2-4.2M14.9 9.1l4.2-4.2"/>
+      </svg>
+    </div>
+    <span class="nav-wordmark"><span>Kinetic</span> Theory</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#games">Games</a></li>
+    <li><a href="support.html">Support</a></li>
+    <li><a href="privacy-policy.html">Privacy</a></li>
+  </ul>
+</nav>
+
+<header id="top">
+  <div class="container">
+    <div class="page-eyebrow">Legal</div>
+    <h1>Privacy Policy</h1>
+    <p class="page-sub">Kinetic Theory &nbsp;·&nbsp; Effective April 1, 2026</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="games-grid">
+    <div class="game-pill">
+      <strong>Maze Racer</strong>
+      <span>com.Kongfucius.MazeRunner</span>
+    </div>
+    <div class="game-pill">
+      <strong>Connect the Colors</strong>
+      <span>com.TwoSquares.Squares</span>
+    </div>
+  </div>
+
+  <div class="callout">
+    This policy applies to all mobile applications (iOS and Android) published by Kinetic Theory, currently including <strong>Maze Racer</strong> and <strong>Connect the Colors</strong>. By playing any Kinetic Theory game, you agree to this policy.
+  </div>
+
+  <nav class="toc">
+    <p class="toc-label">Contents</p>
+    <ol>
+      <li><a href="#s1">Information we collect</a></li>
+      <li><a href="#s2">How we use your data</a></li>
+      <li><a href="#s3">Third-party services</a></li>
+      <li><a href="#s4">Advertising</a></li>
+      <li><a href="#s5">In-app purchases</a></li>
+      <li><a href="#s6">Authentication</a></li>
+      <li><a href="#s7">Data retention</a></li>
+      <li><a href="#s8">Children</a></li>
+      <li><a href="#s9">Your rights</a></li>
+      <li><a href="#s10">Changes to this policy</a></li>
+      <li><a href="#s11">Contact</a></li>
+    </ol>
+  </nav>
+
+  <div class="section" id="s1">
+    <p class="section-num">01</p>
+    <h2>Information we collect</h2>
+    <p>We collect only what is necessary to provide and improve the game experience.</p>
+
+    <h3>Information you provide</h3>
+    <ul>
+      <li>Display name and email address, if you sign in with Apple or Google <span class="game-tag">Maze Racer</span></li>
+      <li>Support messages you send to us directly</li>
+    </ul>
+
+    <h3>Information collected automatically</h3>
+    <ul>
+      <li><strong>Gameplay data</strong> — current level, progress metrics, and other game state, stored locally and synced via Firebase Cloud Save <span class="game-tag">Maze Racer</span></li>
+      <li><strong>Analytics events</strong> — level completions, session starts, ad interactions, and purchase events, via Firebase Analytics <span class="game-tag">Maze Racer</span></li>
+      <li><strong>Device identifiers</strong> — advertising ID (IDFA on iOS, GAID on Android), used only for ad personalisation with your consent <span class="game-tag">Maze Racer</span></li>
+      <li><strong>Crash and performance data</strong> — anonymised diagnostic information, collected in both games</li>
+    </ul>
+
+    <h3>Information we do not collect</h3>
+    <ul>
+      <li>Payment card numbers or banking details (handled entirely by the App Store / Google Play)</li>
+      <li>Precise location data</li>
+      <li>Contacts, camera, or microphone access</li>
+    </ul>
+  </div>
+
+  <div class="section" id="s2">
+    <p class="section-num">02</p>
+    <h2>How we use your data</h2>
+    <ul>
+      <li>To save and sync your game progress across devices</li>
+      <li>To restore purchases made through the App Store or Google Play</li>
+      <li>To measure feature engagement and improve game balance</li>
+      <li>To serve advertising (see Section 4)</li>
+      <li>To respond to support requests</li>
+      <li>To comply with legal obligations</li>
+    </ul>
+    <p>We do not sell your personal data to third parties.</p>
+  </div>
+
+  <div class="section" id="s3">
+    <p class="section-num">03</p>
+    <h2>Third-party services</h2>
+    <p>Our games integrate the following third-party SDKs. Each operates under its own privacy policy.</p>
+
+    <h3>Firebase (Google LLC) <span class="game-tag">Maze Racer</span></h3>
+    <p>Provides authentication, cloud save, and analytics. Data may be transferred to and stored on Google servers. <a href="https://firebase.google.com/support/privacy">Firebase Privacy Policy</a></p>
+
+    <h3>Google AdMob <span class="game-tag">Maze Racer</span></h3>
+    <p>Serves interstitial and rewarded video ads. May collect advertising identifiers subject to your consent choices. <a href="https://policies.google.com/privacy">Google Privacy Policy</a></p>
+
+    <h3>Unity Technologies</h3>
+    <p>Provides the game engine and in-app purchase infrastructure across all Kinetic Theory titles. <a href="https://unity.com/legal/privacy-policy">Unity Privacy Policy</a></p>
+
+    <h3>Apple (Sign in with Apple) <span class="game-tag">Maze Racer</span></h3>
+    <p>Used for optional account creation on iOS. Apple does not share your Apple ID email with us unless you choose to reveal it. <a href="https://www.apple.com/legal/privacy/">Apple Privacy Policy</a></p>
+
+    <h3>Google (Sign in with Google) <span class="game-tag">Maze Racer</span></h3>
+    <p>Used for optional account creation on Android. <a href="https://policies.google.com/privacy">Google Privacy Policy</a></p>
+  </div>
+
+  <div class="section" id="s4">
+    <p class="section-num">04</p>
+    <h2>Advertising</h2>
+
+    <h3>Maze Racer</h3>
+    <p>Maze Racer is free to play and supported by advertising. We show two types of ads:</p>
+    <ul>
+      <li><strong>Interstitial ads</strong> — shown automatically between levels</li>
+      <li><strong>Rewarded video ads</strong> — optional, watched in exchange for in-game lives</li>
+    </ul>
+    <p>On first launch, we display a consent form compliant with the IAB TCF 2.2 standard and Google's EU User Consent Policy. On iOS, we request App Tracking Transparency (ATT) permission before accessing your IDFA. If you decline, only non-personalised ads are shown.</p>
+    <p>Purchasing the <em>Remove Ads</em> product permanently suppresses all interstitial ads. Rewarded video ads remain available as an optional, player-initiated feature.</p>
+
+    <h3>Connect the Colors</h3>
+    <p>Connect the Colors does not currently display advertising.</p>
+  </div>
+
+  <div class="section" id="s5">
+    <p class="section-num">05</p>
+    <h2>In-app purchases</h2>
+    <p>Some Kinetic Theory titles offer optional in-app purchases processed entirely by Apple (App Store) or Google (Play Store). We never see or store your payment information. Purchases are validated against the relevant store on each session start and can be restored at any time using the in-game restore button.</p>
+
+    <h3>Maze Racer</h3>
+    <ul>
+      <li><strong>Remove Ads</strong> — permanently removes interstitial ads (non-consumable)</li>
+      <li><strong>Life Refill</strong> — instantly refills your lives to the maximum (consumable)</li>
+    </ul>
+
+    <h3>Connect the Colors</h3>
+    <p>Connect the Colors does not currently offer in-app purchases.</p>
+  </div>
+
+  <div class="section" id="s6">
+    <p class="section-num">06</p>
+    <h2>Authentication</h2>
+
+    <h3>Maze Racer</h3>
+    <p>Creating an account is optional. You may play as a guest, in which case your progress is saved locally and anonymously in Firebase under a randomly generated user ID. If you sign in with Apple or Google, your display name and email are associated with your Firebase account solely to identify your cloud save data. We do not share this with third parties.</p>
+    <p>You can delete your account at any time by contacting us (see Section 11). Deletion removes your Firebase account and all associated cloud data within 30 days.</p>
+
+    <h3>Connect the Colors</h3>
+    <p>Connect the Colors does not require or offer account creation. No personal data is collected beyond anonymised crash diagnostics.</p>
+  </div>
+
+  <div class="section" id="s7">
+    <p class="section-num">07</p>
+    <h2>Data retention</h2>
+    <p>We retain your data for as long as your account is active or as needed to provide the service. Analytics data is retained in aggregated, anonymised form for up to 14 months per Google's standard retention policy.</p>
+    <p>If you uninstall a game without deleting your account, your cloud save data remains stored until you request deletion.</p>
+  </div>
+
+  <div class="section" id="s8">
+    <p class="section-num">08</p>
+    <h2>Children</h2>
+    <p>Kinetic Theory games are not directed at children under the age of 13 (or under 16 in the European Economic Area). We do not knowingly collect personal data from children. If you believe a child has provided us with personal data, please contact us and we will delete it promptly.</p>
+    <p>Advertising shown to users who have not consented to personalisation is always non-personalised and complies with applicable child-directed advertising regulations.</p>
+  </div>
+
+  <div class="section" id="s9">
+    <p class="section-num">09</p>
+    <h2>Your rights</h2>
+    <p>Depending on your location, you may have the right to:</p>
+    <ul>
+      <li>Access the personal data we hold about you</li>
+      <li>Request correction of inaccurate data</li>
+      <li>Request deletion of your data</li>
+      <li>Object to or restrict certain processing</li>
+      <li>Withdraw consent (including ad personalisation consent) at any time</li>
+      <li>Lodge a complaint with your local data protection authority</li>
+    </ul>
+    <div class="callout">
+      To exercise any of these rights, contact us at the address in Section 11. We will respond within 30 days.
+    </div>
+    <h3>Changing your ad consent</h3>
+    <p>You can revisit your ad consent choices at any time through the in-game settings menu in Maze Racer. On iOS, you can also manage ATT permission under Settings → Privacy &amp; Security → Tracking.</p>
+  </div>
+
+  <div class="section" id="s10">
+    <p class="section-num">10</p>
+    <h2>Changes to this policy</h2>
+    <p>We may update this Privacy Policy from time to time. When we make material changes, we will update the effective date at the top of this page and, where feasible, notify you via an in-app notice on first launch after the change.</p>
+    <p>Continued use of any Kinetic Theory game after a policy update constitutes acceptance of the revised terms.</p>
+  </div>
+
+  <div class="section" id="s11">
+    <p class="section-num">11</p>
+    <h2>Contact</h2>
+    <p>If you have any questions about this Privacy Policy or wish to exercise your data rights, please reach out:</p>
+    <div class="contact-card">
+      <p><strong>Kinetic Theory</strong></p>
+      <p style="margin-top:0.5rem; color: rgba(232,238,248,0.55);">
+        José Pereira<br>
+        Email: <a href="mailto:privacy@kinetictheory.games">privacy@kinetictheory.games</a><br>
+        Location: Porto, Portugal
+      </p>
+    </div>
+  </div>
+
+  <a href="#top" class="back-top">↑ Back to top</a>
+
+</div>
+
+<footer>
+  <p>© 2026 <span>Kinetic Theory</span> &nbsp;·&nbsp; Last updated April 1, 2026 &nbsp;·&nbsp; <a href="index.html">Home</a></p>
+</footer>
+
+</body>
+</html>
