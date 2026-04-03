@@ -569,46 +569,43 @@
 <section class="games" id="games">
   <div class="section-header">
     <span class="section-label">Games</span>
-    <span class="section-count">2 titles</span>
+    <span class="section-count" id="games-count"></span>
   </div>
-  <div class="games-grid">
-
-    <div class="game-card">
-      <div class="game-card-glow"></div>
-      <div class="game-icon">
-        <img src="AppStoreIcon.png" alt="Maze Racer icon" width="56" height="56">
-      </div>
-      <h2>Maze Racer</h2>
-      <p>Race through procedurally generated mazes. Every wall hit costs a life — survive as long as you can.</p>
-      <div class="badges">
-        <span class="badge hot">Active</span>
-        <span class="badge">iOS &amp; Android</span>
-        <span class="badge">Free to play</span>
-      </div>
-    </div>
-
-    <div class="game-card">
-      <div class="game-card-glow"></div>
-      <div class="game-icon">
-        <img src="logo_grey.png" alt="Connect the Colors icon" width="56" height="56">
-        </svg>
-      </div>
-      <h2>Connect the Colors</h2>
-      <p>A calm, minimalist puzzle game. Connect matching colors without crossing paths.</p>
-      <div class="badges">
-        <span class="badge">Android</span>
-        <span class="badge">Free to play</span>
-      </div>
-      <div class="store-links">
-        <a href="https://play.google.com/store/apps/details?id=com.TwoSquares.Squares" class="store-btn" target="_blank" rel="noopener">
-          <img src="https://cdn.simpleicons.org/googleplay/ffffff" width="14" height="14" alt="">
-          Google Play
-        </a>
-      </div>
-    </div>
-
-  </div>
+  <div class="games-grid" id="games-grid"></div>
 </section>
+
+<script>
+  fetch('games.json')
+    .then(r => r.json())
+    .then(games => {
+      document.getElementById('games-count').textContent = `${games.length} title${games.length !== 1 ? 's' : ''}`;
+      const grid = document.getElementById('games-grid');
+      grid.innerHTML = games.map(g => {
+        const badges = g.badges.map(b =>
+          `<span class="badge${b === g.activeBadge ? ' hot' : ''}">${b}</span>`
+        ).join('');
+        const storeLinks = g.storeLinks.length ? `
+          <div class="store-links">
+            ${g.storeLinks.map(s => `
+              <a href="${s.url}" class="store-btn" target="_blank" rel="noopener">
+                <img src="${s.icon}" width="14" height="14" alt="">
+                ${s.label}
+              </a>`).join('')}
+          </div>` : '';
+        return `
+          <div class="game-card">
+            <div class="game-card-glow"></div>
+            <div class="game-icon">
+              <img src="${g.icon}" alt="${g.title} icon" width="56" height="56">
+            </div>
+            <h2>${g.title}</h2>
+            <p>${g.description}</p>
+            <div class="badges">${badges}</div>
+            ${storeLinks}
+          </div>`;
+      }).join('');
+    });
+</script>
 
 <div class="divider"></div>
 
