@@ -37,6 +37,14 @@
   transform: translateX(-50%);
 }
 
+.hero-logo {
+  width: 96px;
+  height: 96px;
+  border-radius: 22px;
+  margin-bottom: 1.75rem;
+  box-shadow: 0 0 40px rgba(247,98,10,0.25);
+}
+
 .hero-eyebrow {
   display: inline-flex;
   align-items: center;
