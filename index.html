@@ -376,6 +376,33 @@
     color: var(--muted);
   }
 
+  .store-links {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+
+  .store-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.9rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.05);
+    color: var(--text);
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.15s, border-color 0.15s;
+  }
+
+  .store-btn:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.25);
+  }
+
   .badge.hot {
     background: rgba(247,98,10,0.12);
     border-color: rgba(247,98,10,0.3);
@@ -569,8 +596,14 @@
       <h2>Connect the Colors</h2>
       <p>A calm, minimalist puzzle game. Connect matching colors without crossing paths.</p>
       <div class="badges">
-        <span class="badge">iOS &amp; Android</span>
+        <span class="badge">Android</span>
         <span class="badge">Free to play</span>
+      </div>
+      <div class="store-links">
+        <a href="https://play.google.com/store/apps/details?id=com.TwoSquares.Squares" class="store-btn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M3.18 23.76c.3.17.64.22.97.15l11.5-11.5-3.27-3.27-9.2 14.62zM20.7 10.3l-2.9-1.66-3.64 3.64 3.64 3.64 2.92-1.68c.83-.48.83-1.66-.02-1.94zM2.01 1.05C1.7 1.37 1.5 1.87 1.5 2.5v19c0 .63.2 1.13.52 1.45l.08.07 10.64-10.64v-.25L2.09.98l-.08.07zM14.65 7.59l-3.27-3.27-11.2 11.21c.33.34.78.56 1.28.56.36 0 .71-.1 1.02-.3l12.17-7.2z"/></svg>
+          Google Play
+        </a>
       </div>
     </div>
 
