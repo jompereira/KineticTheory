@@ -31,7 +31,7 @@ Static marketing site for [Kinetic Theory](https://jompereira.github.io/KineticT
 
 | Title | Platform | Store |
 |---|---|---|
-| Maze Racer | iOS & Android | — |
+| Maze Racer | iOS & Android | [App Store](https://apps.apple.com/us/app/maze-racer-swipe-or-crash/id6761185648) |
 | Connect the Colors | iOS & Android | [App Store](https://apps.apple.com/us/app/connect-colors-logic-puzzle/id6761208108) · [Google Play](https://play.google.com/store/apps/details?id=com.TwoSquares.Squares) |
 
 ## Deployment
